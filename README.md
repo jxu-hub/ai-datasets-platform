@@ -1,18 +1,18 @@
 # AI 数据集平台
 
-一个支持区块链支付的 AI 数据集交易平台，后端使用 Go + Gin，前端使用 Next.js，支付系统基于 Hardhat 本地链与自定义 Solidity 合约（ethers v6）。本文档面向首次接触本项目的开发者，提供从零到可运行的完整步骤与细节。
+一个集成链上支付的 AI 数据集交易平台，后端使用 Go + Gin，前端使用 Next.js。
 
 ## 特性
-- 区块链支付：基于 Hardhat 本地链，前端通过 MetaMask 进行链上交易（购买数据集）。
+- 链上支付：基于 Hardhat 部署，前端通过 MetaMask 进行链上交易。
 - 数据集全流程：预览上传、分片上传、合并、删除、下载（含付费与鉴权）。
-- 排行榜与首页：Redis ZSet 存储热门/最新上传排行榜，公共首页接口无需登录。
+- 排行榜与首页：Redis ZSet 存储热门/最新上传排行榜。
 - 管理端：异常任务处理（Outbox）、MinIO 桶管理、用户与数据集管理。
 - 存储与缓存：MinIO（对象存储）、Redis（缓存与排行榜）、MySQL（业务数据）。
 
 ## 技术栈
-- 后端：Go 1.23 + Gin、GORM、MongoDB Driver、Redis v8、MinIO SDK、Zap
-- 前端：Next.js 15、React 19、TypeScript、Tailwind
-- 合约与链：Hardhat、Solidity、ethers v6、MetaMask（BrowserProvider）
+- 后端：Go + Gin、GORM、MongoDB、Redis、MinIO、Zap
+- 前端：Next.js 15、React 19、TypeScript
+- 合约与链：Hardhat、Solidity、ethers.js、MetaMask（BrowserProvider）
 
 ## 目录结构（关键路径）
 - `backend/`
@@ -37,7 +37,7 @@
 ## 快速开始
 本项目的支付系统基于区块链，Hardhat 是必选。启动顺序如下：
 
-1. 启动 Hardhat 本地节点（必须）
+1. 启动 Hardhat 本地节点
 2. 部署合约并写入前端 `.env` 与 ABI
 3. 启动后端（假定数据库/MinIO 已可用）
 4. 启动前端并用钱包连接到 Hardhat 本地链
@@ -125,6 +125,3 @@
   - 部署完成后将 `NEXT_PUBLIC_CONTRACT_ADDRESS` 改为测试网地址；
   - 前端钱包网络需切到同一链；
   - 后端无需变更区块链配置（链上交付由前端/钱包完成）。
-
-## 许可
-本项目仅用于学习与毕业设计演示，生产使用请评估安全性、风控与合规。
