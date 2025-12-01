@@ -1,0 +1,25 @@
+# Root-level ignore to keep the open-source repo clean and secure
+
+# Node/Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*
+
+# Hardhat
+hardhat/node_modules/
+hardhat/artifacts/
+hardhat/cache/
+hardhat/typechain*/
+hardhat/coverage*/
+
+# Go build & logs
+backend/logs/
+
+# Config with secrets (provide example file instead)
+backend/config/config.yaml
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.tsbuildinfo

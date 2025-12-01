@@ -1,0 +1,47 @@
+server:
+  port: 5000
+  mode: release
+
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: your_password
+  dbname: datasets
+  charset: utf8mb4
+  maxIdleConns: 10
+  maxOpenConns: 100
+
+mongodb:
+  host: 127.0.0.1
+  port: 27017
+  username: user
+  password: your_password
+  authSource: admin
+  database: datasets
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ''
+  db: 0
+
+minio:
+  endpoint: 127.0.0.1:9000
+  accessKey: minio
+  secretKey: password
+  useSSL: false
+  buckets:
+    user_avatars: user-avatars
+    datasets: datasets
+    datasets_temp: datasets-temp
+
+email:
+  smtp:
+    host: smtp.example.com
+    port: 465
+    username: no-reply@example.com
+    password: your_smtp_password
+  from: no-reply@example.com
+  verify_code_expire: 300
+  send_limit: 60
